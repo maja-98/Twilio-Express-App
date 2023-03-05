@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css?family=Eczar");
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+:root{
+    --PRIMARY:#0E185F;
+    --SECONDARY:#2FA4FF;
+    --MEDIUM:#00FFDD;
+    --LIGHT: #E8FFC2;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Josephine Sans";
+}
+html{
+    height: 100%;
+    width: 100%;
+    background-color: var(--MEDIUM)
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+input{
+    width: 300px;
+    margin: 8px;
+    padding: 5px;
+    background: rgb(241, 237, 237);
+    border-radius: 6px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    
+}
+form>h3{
+    margin-top: 5px;;
+    margin-bottom: 10px;
+}
+button{
+    width: 100px;
+    background-color: var(--PRIMARY);
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    margin-top: 20px;
+}
+button:hover{
+    opacity: 0.9;
+}
+.home-container{
+    background-color: var(--SECONDARY);
+    width: 500px;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px white;
+}
+.home-container>h1 {
+    padding: 10px;
+    color: var(--PRIMARY);
+    font-family: Eczar;
+    text-align: center;
+}
+.admin-page-header{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    color: var(--LIGHT);
+    justify-content: space-around;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    background-color: var(--PRIMARY);
+}
+input[type=file]{
+   
+    display: none;
+    background-color: aliceblue;
+}
+#file-input-label{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 800px;
+    height: 100px;
+      
+}
+#message-details{
+    background-color: var(--LIGHT);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#message-details>p{
+    text-align: center;
+}

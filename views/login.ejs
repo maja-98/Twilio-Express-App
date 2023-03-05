@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Twilio-App</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="home-container">
+            <h1>Welcome to Messaging App</h1>
+            <hr/>
+            <form id="login" method="POST" onsubmit="return login()">
+                <h3>Login</h3>
+                <input id="username" type="username" name="username" required placeholder="Username" >
+    
+
+                <input id="password" type="password" name="password" required placeholder="Password" value="12345">
+
+                <button type="submit" >Log In</button>
+                <script>
+                    function login() {
+                        var data = new FormData(document.getElementById("login"));
+                        fetch("/in", { method: "POST", body: data })
+                            .then(res => res.text())
+                            .then(txt => {
+                                if (txt === "OK") {
+                                    window.location.href = '/admin'
+                                }
+                                else {
+                                    alert(txt)
+                                }
+                            })
+                            .catch(err => console.error(err));
+                        return false;
+                    }
+                </script>
+            </form>
+        </div>
+    </body>
+</html>

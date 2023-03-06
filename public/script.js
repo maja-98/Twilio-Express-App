@@ -35,7 +35,7 @@ function updateUI(result){
                 <input class='message-input'  value="${val.message}" id='message_${ind}'/>
                 <button  onclick="handleRemove('phone_${ind}')">Remove</button>
             </div>`
-        }).join('')+`<div class="column-flex"><button  onclick="handlesendMessages()">Send Messages</button></div>`
+        }).join('')+`<div class="column-flex "><button class="send-message-btn"  onclick="handlesendMessages()">Send Messages</button></div>`
     }
 
 }

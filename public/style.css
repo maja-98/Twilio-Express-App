@@ -1,16 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Eczar");
+@import url("https://fonts.googleapis.com/css?family=Shantell+Sans");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+@import url("https://fonts.googleapis.com/css?family=Inter");
 :root{
-    --PRIMARY:#0E185F;
-    --SECONDARY:#a6e7fe;
-    --MEDIUM:#00FFDD;
-    --LIGHT: #E8FFC2;
+    --PRIMARY:#03272d;
+    --SECONDARY:#b29deb;
+    --MEDIUM:#5eaab6;
+    --LIGHT: #f8f8f8;
 }
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: "Josephine Sans";
+    font-family: Inter;
     
 }
 html{
@@ -29,9 +30,13 @@ body{
 input{
     width: 300px;
     margin: 8px;
-    padding: 5px;
-    background: rgb(241, 237, 237);
-    border-radius: 6px;
+    padding: 15px;
+    border-radius: 75px;
+    outline: 0px;
+    border: none;
+    font-size: 14px;
+    box-shadow: -4px 4px rgba(0, 0, 0, 0.204);
+    height: 40px;
 }
 form{
     display: flex;
@@ -47,19 +52,30 @@ form>h3{
 button{
     width: 100px;
     background-color: var(--PRIMARY);
+
     height: 30px;
-    border-radius: 5px;
     color: white;
     margin-top: 20px;
+    border-radius: 25px;
+}
+#login>button{
+    width:250px;
+    height: 40px;
+    border-radius: 75px;
+    border: none;
+    font-family: Inter;
+    
 }
 button:hover{
-    opacity: 0.9;
+    background-color: #1a6975;
+}
+hr{
+    margin-bottom: 20px;
 }
 .home-container{
-    background-color: var(--SECONDARY);
+    background-color:var(--MEDIUM);
     width: 500px;
     height: 300px;
-    border: solid 3px black;
     border-radius: 20px ;
     display: flex;
     flex-direction: column;
@@ -67,14 +83,14 @@ button:hover{
 .home-container>h1 {
     padding: 10px;
     color: var(--PRIMARY);
-    font-family: Eczar;
+    font-family: "Shantell Sans";
     text-align: center;
 }
 .admin-page-container{
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-top: 10px;
+    margin-top: 30px;
    
 }
 .admin-page-header{
@@ -119,7 +135,7 @@ input[type=file]{
       
 }
 #message-details{
-    background-color:#9fffef;
+    background-color:#d4eef2;
     display: flex;
     flex-direction: column;
     height: 500px;
@@ -145,6 +161,7 @@ input[type=file]{
 }
 .phone-input{
     width: 120px;
+    padding: 5px;
 }
 .message-input{
     width: 500px;
@@ -154,6 +171,7 @@ input[type=file]{
     padding-left: 10px;
     padding-top: 10px;
     gap: 20px;
+    align-items: center;
 }
 .overlay{
     position: absolute;
@@ -162,7 +180,7 @@ input[type=file]{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0e175fa8;
+    background-color: #1a6975c1
 }
 .message-box{
     width: 400px;
@@ -170,7 +188,6 @@ input[type=file]{
     background-color: var(--PRIMARY);
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
 }
 .hide{
     display: none;
@@ -191,11 +208,11 @@ input[type=file]{
     height: 100%;
     padding-top: 20px;
     padding-left: 10px;
-    background-color: #19236c;
-    color: white;
+    background-color: #bdd8dd;
+    color: var(--PRIMARY)
 }
 .overlay-btn-container{
-    background-color: #19236c;
+    background-color: #bdd8dd;
     display: flex;
     justify-content: end;
 }
@@ -206,13 +223,18 @@ input[type=file]{
     margin-bottom: 5px;
     background-color: var(--PRIMARY);
     border: 0px;
+    width: 60px;
 }
 .overlay-btn-container>button:hover{
-    background-color: #12194b;
+    background-color:#1a6975;
 }
 #message-details>p{
     margin-top: 200px;
     margin-left: 30px;
+}
+.send-message-btn{
+    width: 200px;
+    margin-bottom: 10px;
 }
 @media screen and (max-width:768px) {
     input {
@@ -221,6 +243,7 @@ input[type=file]{
             padding: 5px;
             font-size: 10px;
             outline: none;
+            height: 25px;
         }
         h1{
             font-size: 20px;
@@ -249,6 +272,13 @@ input[type=file]{
         #file-input-label {
             width: 370px;
             height: 100px;
+    
+        }
+        #login>button {
+            margin-top: 10px;
+            width: 120px;
+            height: 25px;
+
     
         }
     #message-details {

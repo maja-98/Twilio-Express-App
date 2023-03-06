@@ -294,11 +294,11 @@ input[type=file]{
             width: 50px;
         }
     .phone-input {
-        width: 80px;
+        width: 100px;
     }
 
     .message-input {
-        width: 180px;
+        width: 140px;
     }
     .admin-page-header>h4{
         font-size: 13px;

@@ -9,23 +9,35 @@
     <script src="https://use.fontawesome.com/3a2eaf6206.js"></script>
 </head>
 <body>
+    <div id="overlay" class="overlay hide">
+        <div class="message-box">
+            <h1 id="overlay-head">Error</h1>
+            <div class="overlay-message-container" >
+                <p id="overlay-message">Test Messages </p>
+            </div>
+            <div class="overlay-btn-container">
+                <button onclick="toggleOverlay()">Close</button>
+            </div>
+        </div>
+    </div>
     <div class="admin-page-container">
         <div class="admin-page-header">
             <h4>User: <%=username%></h4>
             <h4>From: <%=phone%></h4>
-        </div>
-            <div>
-                <label id="file-input-label">
-                    Upload CSV file
-                    <br/>
-                    <i class="fa fa-2x fa-file"></i>
-                    <input id="file-upload" type="file" accept=".csv" />
-                </label>
+            <a href='Template.csv' download> <i class="fa fa-2x fa-file-excel-o" aria-hidden="true"></i><p>Download Template</p></a>
+        </div >
+        <div class='file-upload-area'>
+            <label id="file-input-label">
+                Upload Template file
+                <br/>
+                <i class="fa fa-2x fa-file"></i>
+                <input id="file-upload" type="file" accept=".csv" />
+            </label>
 
-                <div id="message-details">
-                    <p>No Lines to Sent</p>
-                </div>
+            <div id="message-details">
+                <p>No Lines to Sent</p>
             </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

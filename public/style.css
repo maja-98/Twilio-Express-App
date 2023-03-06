@@ -11,6 +11,7 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: "Josephine Sans";
+    
 }
 html{
     height: 100%;
@@ -69,6 +70,11 @@ button:hover{
     font-family: Eczar;
     text-align: center;
 }
+.admin-page-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 .admin-page-header{
     display: flex;
     height: 50px;
@@ -78,6 +84,17 @@ button:hover{
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     background-color: var(--PRIMARY);
+}
+.admin-page-header >a{
+    color: var(--LIGHT);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.admin-page-header>a>p{
+    font-size: 10px;
 }
 input[type=file]{
    
@@ -99,9 +116,89 @@ input[type=file]{
     background-color: var(--LIGHT);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
 }
+
 #message-details>p{
     text-align: center;
+}
+.err-input{
+    border: 2px solid red;
+    outline: none;
+
+}
+.column-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.phone-input{
+    width: 120px;
+}
+.message-input{
+    width: 500px;
+}
+.flex-display{
+    display: flex;
+    padding-left: 10px;
+    padding-top: 10px;
+    gap: 20px;
+}
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e175fa8;
+}
+.message-box{
+    width: 400px;
+    min-height: fit-content;
+    background-color: var(--PRIMARY);
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: flex;
+}
+#overlay-head{
+    margin: 5px;
+    margin-left: 10px;
+    color: #bcf2f7;
+}
+.overlay-message-container{
+    height: 100%;
+}
+#overlay-message{
+    height: 100%;
+    padding-top: 20px;
+    padding-left: 10px;
+    background-color: #19236c;
+    color: white;
+}
+.overlay-btn-container{
+    background-color: #19236c;
+    display: flex;
+    justify-content: end;
+}
+.overlay-btn-container>button{
+    margin: 0px;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: var(--PRIMARY);
+    border: 0px;
+}
+.overlay-btn-container>button:hover{
+    background-color: #12194b;
 }

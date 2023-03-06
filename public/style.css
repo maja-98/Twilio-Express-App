@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 :root{
     --PRIMARY:#0E185F;
-    --SECONDARY:#2FA4FF;
+    --SECONDARY:#a6e7fe;
     --MEDIUM:#00FFDD;
     --LIGHT: #E8FFC2;
 }
@@ -59,10 +59,10 @@ button:hover{
     background-color: var(--SECONDARY);
     width: 500px;
     height: 300px;
-    border-radius: 20px;
+    border: solid 3px black;
+    border-radius: 20px ;
     display: flex;
     flex-direction: column;
-    border: solid 1px white;
 }
 .home-container>h1 {
     padding: 10px;
@@ -74,6 +74,8 @@ button:hover{
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin-top: 10px;
+   
 }
 .admin-page-header{
     display: flex;
@@ -92,6 +94,7 @@ button:hover{
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    margin-top: 5px;
 }
 .admin-page-header>a>p{
     font-size: 10px;
@@ -100,6 +103,9 @@ input[type=file]{
    
     display: none;
     background-color: aliceblue;
+}
+.file-upload-area{
+    border: 2px solid black;
 }
 #file-input-label{
     cursor: pointer;
@@ -113,12 +119,13 @@ input[type=file]{
       
 }
 #message-details{
-    background-color: var(--LIGHT);
+    background-color:#9fffef;
     display: flex;
     flex-direction: column;
     height: 500px;
     overflow-y: scroll;
     overflow-x: hidden;
+    
     
 }
 
@@ -175,6 +182,7 @@ input[type=file]{
     margin: 5px;
     margin-left: 10px;
     color: #bcf2f7;
+    font-size: 23px;
 }
 .overlay-message-container{
     height: 100%;
@@ -201,4 +209,92 @@ input[type=file]{
 }
 .overlay-btn-container>button:hover{
     background-color: #12194b;
+}
+#message-details>p{
+    margin-top: 200px;
+    margin-left: 30px;
+}
+@media screen and (max-width:768px) {
+    input {
+            width: 200px;
+            margin: 8px;
+            padding: 5px;
+            font-size: 10px;
+            outline: none;
+        }
+        h1{
+            font-size: 20px;
+        }
+    form>h3 {
+        margin-top: 5px;
+        ;
+        margin-bottom: 10px;
+    }
+    button {
+        width: 80px;
+        font-size: 10px;
+    }
+    .home-container {
+        width: 350px;
+        height: 250px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+    .admin-page-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+        #file-input-label {
+            width: 370px;
+            height: 100px;
+    
+        }
+    #message-details {
+        display: flex;
+        padding: 10px;
+        flex-direction: column;
+        height: 670px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+    }
+        .message-input-container>button{
+            width: 50px;
+        }
+    .phone-input {
+        width: 80px;
+    }
+
+    .message-input {
+        width: 180px;
+    }
+    .admin-page-header>h4{
+        font-size: 13px;
+    }
+    .message-box {
+        width: 350px;
+    }
+#overlay-head {
+    font-size:20px;
+}
+
+
+
+#overlay-message {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 13px;
+
+}
+}
+@media screen and (max-height:400px) {
+    .phone-input {
+            width: 120px;
+        }
+
+    .message-input {
+        width: 500px;
+    }
 }

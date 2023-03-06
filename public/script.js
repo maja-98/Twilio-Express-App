@@ -14,7 +14,6 @@ function handleFileLoad(event) {
 
 }
 function updateUI(result){
-    console.log(result.length)
     if (!result.length){
         document.getElementById('message-details').innerHTML= `<p>No Lines to Sent</p>`
     }
@@ -32,15 +31,16 @@ function updateUI(result){
                 }
             }
             return `<div class="message-input-container">
-                <input ' type="phone" title="${errTitle??''}" class="${errClass} phone-input" value="${val.phone}" name='phone_${ind}'/>
-                <input class='message-input'  value="${val.message}" name='message_${ind}'/>
-                <button  onclick="handleRemove('${val.phone}')">Remove</button>
+                <input ' type="phone" title="${errTitle??''}" class="${errClass} phone-input" value="${val.phone}" id='phone_${ind}'/>
+                <input class='message-input'  value="${val.message}" id='message_${ind}'/>
+                <button  onclick="handleRemove('phone_${ind}')">Remove</button>
             </div>`
         }).join('')+`<div class="column-flex"><button  onclick="handlesendMessages()">Send Messages</button></div>`
     }
 
 }
-function handleRemove(phone){
+function handleRemove(element){
+    const phone = document.getElementById(element).value
     const inputArrays = ( Array.from(document.getElementsByClassName('message-input-container')).map(r=>Array.from(r.children)))
     const result = inputArrays.map(val => { return {'phone':val[0].value,'message':val[1].value}})
     updateUI(result.filter(val=> val.phone!==phone))
@@ -64,7 +64,6 @@ function validatePhoneNumbers(){
 }
 function toggleOverlay(){
     const overlay = document.getElementById('overlay')
-    console.log(overlay.classList)
     if (Array.from(overlay.classList).includes('show')){
         overlay.classList.remove('show')
         overlay.classList.add('hide')
@@ -97,7 +96,6 @@ async function handlesendMessages(){
        return false
        
     })
-    console.log(typeof(filteredBody))
     await fetch("/send-messages", { method: "POST", 
         headers: {
         'Accept': 'application/json',

@@ -33,17 +33,18 @@ function updateUI(result){
             return `<div class="message-input-container">
                 <input ' type="phone" title="${errTitle??''}" class="${errClass} phone-input" value="${val.phone}" id='phone_${ind}'/>
                 <input class='message-input'  value="${val.message}" id='message_${ind}'/>
-                <button  onclick="handleRemove('phone_${ind}')">Remove</button>
+                <button  onclick="handleRemove('phone_${ind}','message_${ind}')">Remove</button>
             </div>`
         }).join('')+`<div class="column-flex "><button class="send-message-btn"  onclick="handlesendMessages()">Send Messages</button></div>`
     }
 
 }
-function handleRemove(element){
-    const phone = document.getElementById(element).value
+function handleRemove(phoneElement,messageElement){
+    const phone = document.getElementById(phoneElement).value
+    const message = document.getElementById(messageElement).value
     const inputArrays = ( Array.from(document.getElementsByClassName('message-input-container')).map(r=>Array.from(r.children)))
     const result = inputArrays.map(val => { return {'phone':val[0].value,'message':val[1].value}})
-    updateUI(result.filter(val=> val.phone!==phone))
+    updateUI(result.filter(val=> !(val.phone===phone && val.message===message)))
     localStorage.setItem("TWILIO_APP_MESSAGE_XREF",JSON.stringify(result.filter(val=> val.phone!==phone)))
 }
 function validatePhoneNumbers(){
@@ -73,40 +74,57 @@ function toggleOverlay(){
         overlay.classList.remove('hide')        
     }
 }
-function setOverlayMessage(heading,message){
+function setOverlayMessage(heading,message,htmlFl){
     document.getElementById('overlay-head').textContent = heading
-    document.getElementById('overlay-message').textContent = message
+    if (!htmlFl){
+        document.getElementById('overlay-message').textContent = message
+    }
+    else{
+        document.getElementById('overlay-message').innerHTML = message
+    }
+    
+    
     
 }
 async function handlesendMessages(){
     const inputArrays = ( Array.from(document.getElementsByClassName('message-input-container')).map(r=>Array.from(r.children)))
     const body = inputArrays.map(val => { return {'phone':val[0].value,'message':val[1].value}})
+    localStorage.setItem("TWILIO_APP_MESSAGE_XREF",JSON.stringify(body))
     if (!validatePhoneNumbers()){
         setOverlayMessage('Invalid Phone number','Make sure that phone number is Valid and correct format with country code')
         toggleOverlay()
         return
     }
-    localStorage.setItem("TWILIO_APP_MESSAGE_XREF",JSON.stringify(body))
-    const filteredBody = body.filter(val => {
-       const str = (val.phone.match('[+][1234567890]{11,13}')) 
-
-       if (str){
-            return str[0] ===val.phone
-       }
-       return false
-       
-    })
+    setOverlayMessage("Loading",`<div  class="column-flex" >
+             <i style="margin-bottom:5px" ><i class="fa fa-spinner fa-spin" style="font-size:24px"></i> </i>
+            <p>Loading...</p>
+            <p> Don't close the window to see the results</p>
+        </div>`,'Y')
+    toggleOverlay()
     await fetch("/send-messages", { method: "POST", 
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify(filteredBody) })
+        body: JSON.stringify(body) })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
+                if(res.result.length){
+                    setOverlayMessage("Result",`<div class="column-flex-left" > 
+                            <p>Following Messages Failed to Sent</p><br/>
+                            ${res.result.map(({phone,message})=>{
+                                const val = message.length>12 ?'...':''
+                                return `<div style="display:flex;gap:10px"><p>${phone}</p><p>${message.slice(0,15)+val}</p></div>`
+                            }).join('')}
+                            </div>`,'Y')
+                }else{
+                     setOverlayMessage("Result",`<div class="column-flex-left"> 
+                            <p>All messages sent Successfully</p>
+                            </div>`,'Y')                   
+                }
+
             })
-            .catch(err => console.error(err))
+            .catch(err => console.error(err.msg))
 }
 document.getElementById('file-upload').addEventListener('change',(event)=>{
     const reader = new FileReader()

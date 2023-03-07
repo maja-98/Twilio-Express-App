@@ -3,12 +3,12 @@ const authorize = (req,res,next) => {
       
     if (jwtVerify(res,req.cookies)) {
       if (req.url==='/'){
-            res.redirect('/admin')
+            return res.redirect('/admin')
       }
         next()
   } else {
       if (req.url!=='/'){
-        res.redirect("/")
+        return res.redirect("/")
       }
       next()
   }

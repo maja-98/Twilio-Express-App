@@ -73,20 +73,22 @@ app.get("/admin", [authorize],(req, res) => {
 });
 app.post("/send-messages",[authorize],(req,res)=>{
         const data = req.body
-        Promise.all(
-        data.map(({phone,message}) => {
-            return client.messages.create({
-            to: phone,
-            from: process.env.TWILIO_PHONE_NUMBER,
-            body: message
-            });
+        let errorArray = []
+        let successArray = []
+        const lenthofData = data.length
+        data.forEach(  ({phone,message}) => {
+
+              client.messages.create({
+                to: phone,
+                from: process.env.TWILIO_PHONE_NUMBER,
+                body: message
+              }).then(result => successArray.push(result.to)).catch(err=>errorArray.push({phone,message}))
+
         })
-        )
-        .then(messages => {
-            console.log('Messages sent!');
-            return res.status(200)
-        })
-        .catch(err => {console.error(err);return res.status(400)});
+        setTimeout(()=>{
+          return res.status(200).json({result:errorArray})
+        },1500*lenthofData)
+        
 })
 
 app.all('*',(req,res)=>{

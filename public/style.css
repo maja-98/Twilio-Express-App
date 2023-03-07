@@ -157,10 +157,15 @@ input[type=file]{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
+}
+.column-flex-left{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
 }
 .phone-input{
-    width: 120px;
+    width: 140px;
     padding: 5px;
 }
 .message-input{
@@ -174,7 +179,7 @@ input[type=file]{
     align-items: center;
 }
 .overlay{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     display: flex;
@@ -295,6 +300,7 @@ input[type=file]{
         }
     .phone-input {
         width: 100px;
+
     }
 
     .message-input {

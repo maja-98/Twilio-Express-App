@@ -7,9 +7,13 @@ const authorize = (req,res,next) => {
       }
         next()
   } else {
-      if (req.url!=='/'){
+    if (req.url==='/send-messages'){
+      return res.status(404).json({message:'UnAuthorized'})
+    }
+      else if (req.url!=='/'){
         return res.redirect("/")
       }
+      
       next()
   }
 }
